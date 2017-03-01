@@ -1,0 +1,36 @@
+#header{
+  //border: 2px solid black;
+}
+
+#camera{
+  width: 98%;
+  padding: 1% 1% 0% 1%;
+}
+
+#camera-cell{
+  width: 55%;
+}
+
+#main-table {
+  width: 100%;
+//  border: 2px solid black;
+}
+
+#main-table td {
+//  border: 2px solid black;
+}
+
+.number-edit {
+//  border: 2px solid black;
+  padding: 7px;
+  background-color: grey;
+  margin-right: 1%;
+}
+
+.number-edit input {
+  width: 2em;
+}
+
+#camera-fields {
+  padding: 1%;
+}

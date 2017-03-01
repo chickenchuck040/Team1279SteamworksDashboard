@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="/networktables/networktables.js"></script>
+    <script src="js/jquery-2.2.2.min.js"></script>
+    <link rel="stylesheet" href="css/stylesheet.css">
+  </head>
+  <body>
+
+    <table id="main-table">
+      <tr>
+        <td id="camera-cell">
+          
+          <img id="camera" src='http://192.168.5.114:8080'/>
+
+          <div id="camera-fields">
+
+            <span class="number-edit">
+              <span>Camera:</span>
+              <input id="camera-value" type="number" min=0 max=1></input>
+            </span>
+
+            <span class="number-edit">
+              <span>Processing:</span>
+              <input id="process-value" type="number" min=0 max=4></input>
+            </span>
+
+            <span class="number-edit">
+              <span>Turn: </span>
+              <span id="turn-value"></span>
+            </span>
+          </div>
+
+        </td>
+        <td>
+
+          <table id="nt" border=1>
+            <tbody></tbody>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+    
+    <div id="header">
+      NetworkTables websocket: <span id="connectstate">Unknown state</span><br/>
+      Robot: <span id="robotstate">Unknown state</span> @ <span id="robotAddress">disconnected</span>
+    </div>
+
+    <script src="js/index.js"></script>
+
+  </body>
+</html>
