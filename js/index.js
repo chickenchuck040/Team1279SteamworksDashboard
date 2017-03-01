@@ -7,6 +7,16 @@ var cameracell = document.getElementById("camera-cell");
 var cameravalue = document.getElementById("camera-value");
 var processvalue = document.getElementById("process-value");
 var turnvalue = document.getElementById("turn-value");
+var lower_red = document.getElementById("lower_red");
+var upper_red = document.getElementById("upper_red");
+var lower_blue = document.getElementById("lower_blue");
+var upper_blue = document.getElementById("upper_blue");
+var lower_green = document.getElementById("lower_green");
+var upper_green = document.getElementById("upper_green");
+
+//$("#red-slider").slider({max: 255, min: 0, range: true});
+//$("#blue-slider").slider({max: 255, min: 0, range: true});
+//$("#green-slider").slider({max: 255, min: 0, range: true});
 
 console.log("Starting");
 // sets a function that will be called when the websocket connects/disconnects
@@ -33,6 +43,59 @@ NetworkTables.addKeyListener("/RaspberryPi/process", function(key, value, isNew)
 NetworkTables.addKeyListener("/RaspberryPi/turn", function(key, value, isNew){
   turnvalue.innerHTML = parseFloat(value, 10).toFixed(5);
 }, true);
+
+
+NetworkTables.addKeyListener("/RaspberryPi/turn", function(key, value, isNew){
+  turnvalue.innerHTML = parseFloat(value, 10).toFixed(5);
+}, true);
+
+NetworkTables.addKeyListener("/RaspberryPi/lower_red", function(key, value, isNew){
+  lower_red.value = value;
+}, true);
+
+NetworkTables.addKeyListener("/RaspberryPi/upper_red", function(key, value, isNew){
+  upper_red.value = value;
+}, true);
+
+NetworkTables.addKeyListener("/RaspberryPi/lower_blue", function(key, value, isNew){
+  lower_blue.value = value;
+}, true);
+
+NetworkTables.addKeyListener("/RaspberryPi/upper_blue", function(key, value, isNew){
+  upper_blue.value = value;
+}, true);
+
+NetworkTables.addKeyListener("/RaspberryPi/lower_green", function(key, value, isNew){
+  lower_green.value = value;
+}, true);
+
+NetworkTables.addKeyListener("/RaspberryPi/upper_green", function(key, value, isNew){
+  upper_green.value = value;
+}, true);
+
+lower_red.addEventListener("input", function(e){
+  NetworkTables.putValue("/RaspberryPi/lower_red", parseFloat(lower_red.value, 10));
+});
+
+upper_red.addEventListener("input", function(e){
+  NetworkTables.putValue("/RaspberryPi/upper_red", parseFloat(upper_red.value, 10));
+});
+
+lower_blue.addEventListener("input", function(e){
+  NetworkTables.putValue("/RaspberryPi/lower_blue", parseFloat(lower_blue.value, 10));
+});
+
+upper_blue.addEventListener("input", function(e){
+  NetworkTables.putValue("/RaspberryPi/upper_blue", parseFloat(upper_blue.value, 10));
+});
+
+lower_green.addEventListener("input", function(e){
+  NetworkTables.putValue("/RaspberryPi/lower_green", parseFloat(lower_green.value, 10));
+});
+
+upper_green.addEventListener("input", function(e){
+  NetworkTables.putValue("/RaspberryPi/upper_green", parseFloat(upper_green.value, 10));
+});
 
 cameravalue.addEventListener("input", function(e){
   NetworkTables.putValue("/RaspberryPi/camera", parseInt(cameravalue.value, 10));

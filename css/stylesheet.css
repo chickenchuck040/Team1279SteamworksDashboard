@@ -27,7 +27,7 @@
   margin-right: 1%;
 }
 
-.number-edit input {
+input[type=number] {
   width: 2em;
 }
 
