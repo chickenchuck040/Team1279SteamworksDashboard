@@ -2,13 +2,50 @@
   //border: 2px solid black;
 }
 
+#header .half{
+  width: 40%;
+  display: inline-block;
+}
+
+#btn-half{
+  padding: 0.5em;
+}
+
+#header p{
+  margin: 0; 
+}
+
+.button {
+  border: 2px solid black;
+  margin-top: 0em;
+  margin-bottom: 1em;
+}
+
+.button:hover{
+  background-color: grey;
+  cursor: pointer;
+}
+
+.half{
+  display: inline-block;
+  width: 49%;
+}
+
+#camera-div{
+  width: 55%;
+}
+
+#debug-div{
+  width: 40%
+}
+
+#not-debug-div{
+  width: 40%;
+}
+
 #camera{
   width: 98%;
   padding: 1% 1% 0% 1%;
-}
-
-#camera-cell{
-  width: 55%;
 }
 
 #main-table {
@@ -33,4 +70,47 @@ input[type=number] {
 
 #camera-fields {
   padding: 1%;
+}
+
+#nt{
+  display: block;
+  height: 25em;
+  overflow-y: auto;
+}
+
+
+
+#lift-up {
+  background-color: grey;
+  height: 3em;
+}
+
+#lift-down {
+  background-color: grey;
+  height: 3em;
+}
+
+#gear-open {
+  height: 17em;
+  width: 100%;
+  background-color: red;
+  margin: auto;
+}
+
+#gear-close {
+  height: 100%;
+  width: 80%;
+  background-color: yellow;
+  margin: auto;
+}
+
+#gear-state {
+  height: 100%;
+  width: 60%;
+  background-color: green;
+  margin: auto;
+}
+
+#gear-img{
+  width: 100%;
 }

@@ -2,83 +2,126 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <script src="/networktables/networktables.js"></script>
-    <script src="js/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="/networktables/networktables.js"></script>
+    <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="js/smoothie.js"></script><Paste>
     <link rel="stylesheet" href="css/stylesheet.css">
   </head>
   <body>
 
-    <table id="main-table">
-      <tr>
-        <td id="camera-cell">
-          
-          <img id="camera" src='http://192.168.5.114:8080'/>
+    <div id="camera-div" class="half">      
+      <img id="camera" src='http://10.12.79.11:5800'/>
 
-          <div id="camera-fields">
-            <span class="number-edit">
-              <span>Camera:</span>
-              <input id="camera-value" type="number" min=0 max=1></input>
-            </span>
+      <div id="camera-fields">
+        <span class="number-edit">
+          <span>Camera:</span>
+          <input id="camera-value" type="number" min=0 max=1></input>
+        </span>
 
-            <span class="number-edit">
-              <span>Processing:</span>
-              <input id="process-value" type="number" min=0 max=4></input>
-            </span>
+        <span class="number-edit">
+          <span>Processing:</span>
+          <input id="process-value" type="number" min=0 max=4></input>
+        </span>
 
-            <span class="number-edit">
-              <span>Turn: </span>
-              <span id="turn-value"></span>
-            </span>
-          </div>
+        <span class="number-edit">
+          <span>Turn: </span>
+          <span id="turn-value"></span>
+        </span>
+      </div>
 
-        </td>
-        <td>
+    </div>
 
-          <table id="nt" border=1>
-            <tbody></tbody>
-          </table>
+    <div id="not-debug-div" class="half">
+      <!--
+      <div id="claw-div">
+        <p id="claw-state">Unknown</p>
+      </div>
+      -->
 
-          <div id="rgb-values">
-            <!-- 
-            <div id="red-slider"></div>
-            <div id="blue-slider"></div>
-              <div id="green-slider"></div>
-            -->
-            <div class="number-edit">
-              <p>Red:</p>
-              <div>
-                <span>Min: </span><input id="lower_red" type="range" min=0 max=255></input>
-              </div>
-              <div>
-                <span>Max: </span><input id="upper_red" type="range" min=0 max=255></input>
-              </div>
+      <select id="auto-select">
+        <option value="b">Baseline</option>
+        <option value="g">Middle Gear</option>
+        <option value="gb">Boilerside Gear</option>
+        <option value="gl">Loadingside Gear</option>
+      </select>
+      
 
-              <p>Green:</p>
-              <div>
-                <span>Min: </span><input id="lower_green" type="range" min=0 max=255></input>
-              </div>
-              <div>
-                <span>Max: </span><input id="upper_green" type="range" min=0 max=255></input>
-              </div>
-
-              <p>Blue:</p>
-              <div>
-                <span>Min: </span><input id="lower_blue" type="range" min=0 max=255></input>
-              </div>
-              <div>
-                <span>Max: </span><input id="upper_blue" type="range" min=0 max=255></input>
-              </div>
+      <div id="gear-lift-state">
+        <div id="lift-up"></div>
+        <div id="gear-open">
+          <div id="gear-close">
+            <div id="gear-state">
+              <img id="gear-img" src="gear.png"/>
             </div>
+          </div>
+        </div>
+        <div id="lift-down"></div>
+      </div>
 
+          
+			<div class="number-edit">
+        <p>Currents:</p>
+        <canvas id="current" width="400" height="100"></canvas>				
+      </div>
+    </div>
+
+    <div id="debug-div" class="half">
+      <table id="nt" border=1>
+        <thead>
+          <tr>
+            <td>
+              Key
+            </td>
+            <td>
+              Value
+            </td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+       <div id="rgb-values">
+        <div class="number-edit">
+          <div>
+            <span >Red Min: </span>
+            <input id="lower_red" type="range" min=0 max=255></input>
+          </div>
+          <div>
+            <span>Red Max: </span>
+            <input id="upper_red" type="range" min=0 max=255></input>
           </div>
 
-        </td>
-      </tr>
-    </table>
-    
+          <div>
+            <span>Green Min: </span>
+            <input id="lower_green" type="range" min=0 max=255></input>
+          </div>
+          <div>
+            <span>Green Max: </span>
+            <input id="upper_green" type="range" min=0 max=255></input>
+          </div>
+
+          <div>
+            <span>Blue Min: </span>
+            <input id="lower_blue" type="range" min=0 max=255></input>
+          </div>
+          <div>
+            <span>Blue Max: </span>
+            <input id="upper_blue" type="range" min=0 max=255></input>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <div id="header">
-      NetworkTables websocket: <span id="connectstate">Unknown state</span><br/>
-      Robot: <span id="robotstate">Unknown state</span> @ <span id="robotAddress">disconnected</span>
+      <div class="half">
+        <p>NetworkTables websocket: <span id="connectstate">Unknown state</span></p>
+        <p>Robot: <span id="robotstate">Unknown state</span> @ <span id="robotAddress">disconnected</span></p>
+      </div>
+      <div id="btn-half" class="half">
+        <a id="debug-btn" class="button">Debug</a>
+        <a id="not-debug-btn" class="button">Not Debug</a>
+        </div>
     </div>
 
     <script src="js/index.js"></script>
